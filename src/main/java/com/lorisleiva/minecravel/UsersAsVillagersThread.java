@@ -32,6 +32,7 @@ public class UsersAsVillagersThread extends Thread
     {
         String id = event.attributes.get(0);
         String name = event.attributes.get(1);
+        Minecravel.LOGGER.info("Adding villager: " + id + ", " + name);
         NetworkManager.INSTANCE.sendToServer(new PacketAddVillager(id, name));
     }
 
@@ -39,12 +40,14 @@ public class UsersAsVillagersThread extends Thread
     {
         String id = event.attributes.get(0);
         String newName = event.attributes.get(1);
+        Minecravel.LOGGER.info("Updating villager: " + id + ", " + newName);
         NetworkManager.INSTANCE.sendToServer(new PacketUpdateVillager(id, newName));
     }
 
     private void removeVillager(DatabaseDeleteEvent event)
     {
         String id = event.attributes.get(0);
+        Minecravel.LOGGER.info("Removing villager: " + id);
         NetworkManager.INSTANCE.sendToServer(new PacketRemoveVillager(id));
     }
 }

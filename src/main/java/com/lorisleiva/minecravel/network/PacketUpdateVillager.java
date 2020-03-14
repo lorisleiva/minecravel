@@ -1,7 +1,6 @@
 package com.lorisleiva.minecravel.network;
 
 import com.lorisleiva.minecravel.Minecravel;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
 

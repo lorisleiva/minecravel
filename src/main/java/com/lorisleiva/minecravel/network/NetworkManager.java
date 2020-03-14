@@ -22,11 +22,10 @@ public class NetworkManager
         return ID++;
     }
 
-    public static void registerPackets() {
-        INSTANCE.registerMessage(nextID(),
-            PacketAddVillager.class,
-            PacketAddVillager::toBytes,
-            PacketAddVillager::new,
-            PacketAddVillager::handle);
+    public static void registerPackets()
+    {
+        INSTANCE.registerMessage(nextID(), PacketAddVillager.class, PacketAddVillager::toBytes, PacketAddVillager::new, PacketAddVillager::handle);
+        INSTANCE.registerMessage(nextID(), PacketUpdateVillager.class, PacketUpdateVillager::toBytes, PacketUpdateVillager::new, PacketUpdateVillager::handle);
+        INSTANCE.registerMessage(nextID(), PacketRemoveVillager.class, PacketRemoveVillager::toBytes, PacketRemoveVillager::new, PacketRemoveVillager::handle);
     }
 }
