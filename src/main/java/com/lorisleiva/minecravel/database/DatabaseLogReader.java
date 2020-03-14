@@ -1,4 +1,4 @@
-package com.lorisleiva.minecravel;
+package com.lorisleiva.minecravel.database;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
