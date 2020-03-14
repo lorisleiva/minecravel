@@ -15,8 +15,9 @@ import org.apache.logging.log4j.Logger;
 public class Minecravel
 {
     public static final String MODID = "minecravel";
-
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+    public static UsersAsVillagersManager usersAsVillagersManager;
+    public static UsersAsVillagersThread usersAsVillagersThread;
 
     public Minecravel()
     {
@@ -24,13 +25,5 @@ public class Minecravel
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // ...
-
-//        MinecraftServer server = event.getServer();
-//        ServerWorld world = server.getWorld(DimensionType.OVERWORLD);
-//        ServerPlayerEntity player = world.getRandomPlayer();
-//        Entity villager = new VillagerEntity(EntityType.VILLAGER, world);
-//        villager.setPosition(player.getPosX() + 2,player.getPosY(),player.getPosZ());
-//        player.applyOrientationToEntity(villager);
-//        world.addEntity(villager);
     }
 }

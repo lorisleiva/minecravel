@@ -3,7 +3,7 @@ package com.lorisleiva.minecravel.database;
 import java.io.Serializable;
 import java.util.List;
 
-class DatabaseDeleteEvent extends DatabaseEvent
+public class DatabaseDeleteEvent extends DatabaseEvent
 {
     public DatabaseDeleteEvent(String table, List<String> attributes)
     {

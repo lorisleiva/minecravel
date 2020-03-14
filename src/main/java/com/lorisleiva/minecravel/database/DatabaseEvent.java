@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-class DatabaseEvent
+public class DatabaseEvent
 {
     public String table;
     public List<String> attributes;

@@ -24,9 +24,9 @@ public class NetworkManager
 
     public static void registerPackets() {
         INSTANCE.registerMessage(nextID(),
-            PacketSpawnVillager.class,
-            PacketSpawnVillager::toBytes,
-            PacketSpawnVillager::new,
-            PacketSpawnVillager::handle);
+            PacketAddVillager.class,
+            PacketAddVillager::toBytes,
+            PacketAddVillager::new,
+            PacketAddVillager::handle);
     }
 }

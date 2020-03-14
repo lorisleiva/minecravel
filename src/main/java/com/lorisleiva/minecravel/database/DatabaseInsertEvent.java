@@ -3,7 +3,7 @@ package com.lorisleiva.minecravel.database;
 import java.io.Serializable;
 import java.util.List;
 
-class DatabaseInsertEvent extends DatabaseEvent
+public class DatabaseInsertEvent extends DatabaseEvent
 {
     public DatabaseInsertEvent(String table, List<String> attributes)
     {

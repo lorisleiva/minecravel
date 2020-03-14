@@ -3,7 +3,7 @@ package com.lorisleiva.minecravel.database;
 import java.io.Serializable;
 import java.util.List;
 
-class DatabaseUpdateEvent extends DatabaseEvent
+public class DatabaseUpdateEvent extends DatabaseEvent
 {
     public List<String> oldAttributes;
 
