@@ -28,7 +28,7 @@ public class CommandSpawnVillager
     private static int run(CommandContext<CommandSource> ctx) throws CommandSyntaxException
     {
         String name = MessageArgument.getMessage(ctx, "name").getString();
-        NetworkManager.INSTANCE.sendToServer(new PacketAddVillager(name));
+        NetworkManager.INSTANCE.sendToServer(new PacketAddVillager(name, name));
         return 0;
     }
 }

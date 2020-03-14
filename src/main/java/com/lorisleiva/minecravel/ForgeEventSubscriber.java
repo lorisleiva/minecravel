@@ -21,7 +21,8 @@ public final class ForgeEventSubscriber
     public static void onServerStarted(final FMLServerStartedEvent event)
     {
         ServerWorld world = event.getServer().getWorld(DimensionType.OVERWORLD);
-        Minecravel.usersAsVillagersManager = new UsersAsVillagersManager(world);
+        Minecravel.villagerRepository = new VillagerRepository(world);
+        Minecravel.villagerRepository.removeAllVillagers();
         Minecravel.usersAsVillagersThread = new UsersAsVillagersThread();
         Minecravel.usersAsVillagersThread.start();
     }

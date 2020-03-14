@@ -1,24 +1,21 @@
 package com.lorisleiva.minecravel.network;
 
 import com.lorisleiva.minecravel.Minecravel;
-import com.lorisleiva.minecravel.VillagerRepository;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkEvent;
 
-public class PacketAddVillager extends NetworkPacket
+public class PacketUpdateVillager extends NetworkPacket
 {
     private final String id;
     private final String name;
 
-    public PacketAddVillager(String id, String name) {
+    public PacketUpdateVillager(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public PacketAddVillager(PacketBuffer buf)
+    public PacketUpdateVillager(PacketBuffer buf)
     {
         this.id = buf.readString();
         this.name = buf.readString();
@@ -32,7 +29,6 @@ public class PacketAddVillager extends NetworkPacket
 
     public void run(NetworkEvent.Context ctx)
     {
-        ServerPlayerEntity player = ctx.getSender();
-        Minecravel.villagerRepository.addVillager(id, player, name);
+        Minecravel.villagerRepository.updateVillager(id, name);
     }
 }

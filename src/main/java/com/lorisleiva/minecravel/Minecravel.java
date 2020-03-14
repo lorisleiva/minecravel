@@ -16,7 +16,7 @@ public class Minecravel
 {
     public static final String MODID = "minecravel";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-    public static UsersAsVillagersManager usersAsVillagersManager;
+    public static VillagerRepository villagerRepository;
     public static UsersAsVillagersThread usersAsVillagersThread;
 
     public Minecravel()
