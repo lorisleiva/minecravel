@@ -4,7 +4,6 @@ import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -62,9 +61,7 @@ public class DatabaseLogReader
 
     public void notify(DatabaseEvent event)
     {
-        observers.forEach(observer -> {
-            observer.accept(event);
-        });
+        observers.forEach(observer -> observer.accept(event));
     }
 
     public void connect() throws IOException
@@ -103,97 +100,6 @@ public class DatabaseLogReader
         });
 
         client.connect();
-    }
-
-    private static class DatabaseEvent
-    {
-        public String table;
-        public List<String> attributes;
-
-        public DatabaseEvent(String table, List<String> attributes)
-        {
-            this.table = table;
-            this.attributes = attributes;
-        }
-
-        public DatabaseEvent(String table, Serializable[] serializedAttributes)
-        {
-            this.table = table;
-            this.attributes = deserializeAttributes(serializedAttributes);
-        }
-
-        protected List<String> deserializeAttributes(Serializable[] serializedAttributes)
-        {
-            List<String> attributes = new ArrayList<>(serializedAttributes.length);
-
-            for (Serializable serializedAttribute: serializedAttributes) {
-                attributes.add(String.valueOf(serializedAttribute));
-            }
-
-            return attributes;
-        }
-
-        @Override
-        public String toString()
-        {
-            return this.getClass().getSimpleName() + "{" +
-                    "table='" + table + '\'' +
-                    ", attributes=" + attributes +
-                    '}';
-        }
-    }
-
-    private static class DatabaseInsertEvent extends DatabaseEvent
-    {
-        public DatabaseInsertEvent(String table, List<String> attributes)
-        {
-            super(table, attributes);
-        }
-
-        public DatabaseInsertEvent(String table, Serializable[] serializedAttributes)
-        {
-            super(table, serializedAttributes);
-        }
-    }
-
-    private static class DatabaseUpdateEvent extends DatabaseEvent
-    {
-        public List<String> oldAttributes;
-
-        public DatabaseUpdateEvent(String table, List<String> attributes, List<String> oldAttributes)
-        {
-            super(table, attributes);
-            this.oldAttributes = oldAttributes;
-        }
-
-        public DatabaseUpdateEvent(String table, Serializable[] serializedAttributes, Serializable[] serializedOldAttributes)
-        {
-            super(table, serializedAttributes);
-            this.oldAttributes = deserializeAttributes(serializedOldAttributes);
-        }
-
-        @Override
-        public String toString()
-        {
-            return this.getClass().getSimpleName() + "{" +
-                    "table='" + table + '\'' +
-                    ", before=" + oldAttributes +
-                    ", after=" + attributes +
-                    '}';
-        }
-    }
-
-    private static class DatabaseDeleteEvent extends DatabaseEvent
-    {
-        public DatabaseDeleteEvent(String table, List<String> attributes)
-        {
-            super(table, attributes);
-        }
-
-        public DatabaseDeleteEvent(String table, Serializable[] serializedAttributes)
-        {
-            super(table, serializedAttributes);
-        }
     }
 
     public static void main(String[] args) throws IOException
